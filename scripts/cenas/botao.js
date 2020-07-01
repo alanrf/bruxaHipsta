@@ -9,14 +9,32 @@ class BotaoGerenciador {
   }
   
   draw() {
-    this.botao.position(this.x, this.y)
-    this.botao.center('horizontal')
+    this.botao.show()
+    this.botao.position(this.x, this.y)    
     this.botao.addClass('botao-tela-inicial')
-    this.botao.mousePressed(() => this.alteraCena())
+    this.botao.center('horizontal')
+    this.botao.mousePressed(() => this.acao())
   }
   
-  alteraCena() {
-    this.botao.remove()
-    cenaAtual = 'jogo'
+  acao() {
+    cenaAtual = "jogo"
+    this.botao.hide()
+  }
+}
+
+class BotaoIniciar extends BotaoGerenciador {
+  
+}
+
+class BotaoJogarNovamente extends BotaoGerenciador {
+  draw() {
+    super.draw()
+    console.log(this.x, this.y)
+  }
+  
+  acao() {
+    jogo.setup()
+    super.acao()
+    loop()
   }
 }

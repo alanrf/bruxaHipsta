@@ -7,7 +7,8 @@ function setup() {
     jogo
   }
   jogo.setup()
-  botaoGerenciador = new BotaoGerenciador('Iniciar', width / 2, height / 2)
+  botaoIniciar = new BotaoIniciar('Iniciar', width / 2, height / 2)
+  botaoJogarNovamente = new BotaoJogarNovamente('Jogar Novamente', width / 2, height / 2)
 
   frameRate(40)
   somDoJogo.loop();
@@ -18,8 +19,5 @@ function keyPressed() {
 }
 
 function draw() {
-  // if(cenaAtual === 'jogo') {
-  //   jogo.draw()
-  // }
   cenas[cenaAtual].draw()
 }

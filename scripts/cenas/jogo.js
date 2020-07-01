@@ -6,17 +6,26 @@ class Jogo {
 
   setup() {
     cenario = new Cenario(imagemCenario, 3);
-    pontuacao = new Pontuacao();
-    vida = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial);
+    
+    this.reset()
 
     personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 30, 110, 135, 220, 270);
-    const inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 30, 52, 52, 104, 104, 10);
+    const inimigoNormal = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 30, 52, 52, 104, 104, 10);
     const inimigoVoador = new Inimigo(matrizInimigoVoador, imagemInimigoVoador, width - 52, 200, 100, 75, 200, 150, 10);
     const inimigoGrande = new Inimigo(matrizInimigoGrande, imagemInimigoGrande, width, 0, 200, 200, 400, 400, 10)
 
-    inimigos.push(inimigo)
+    inimigos.push(inimigoNormal)
     inimigos.push(inimigoGrande)
     inimigos.push(inimigoVoador)
+  }
+  
+  reset() {
+    pontuacao = new Pontuacao();
+    vida = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial);
+    inimigos.forEach(function(inimigo) {
+      inimigo.voltarParaPosicaoOriginal();
+    });
+    this.indice = 0
   }
 
   keyPressed(key) {
@@ -30,8 +39,8 @@ class Jogo {
 
   draw() {
     const linhaAtual = this.mapa[this.indice]
-    const inimigo = inimigos[linhaAtual.inimigo]
-    const inimigoVisivel = inimigo.x < -inimigo.largura
+    const inimigoAtual = inimigos[linhaAtual.inimigo]
+    const inimigoVisivel = inimigoAtual.x < -inimigoAtual.largura
     cenario.exibe();
     cenario.move();
 
@@ -40,27 +49,36 @@ class Jogo {
     personagem.exibe();
     personagem.aplicaGravidade();
     
-    inimigo.alteraVelocidade(linhaAtual.velocidade)
-    inimigo.exibe()
-    inimigo.move()
+    inimigoAtual.alteraVelocidade(linhaAtual.velocidade)
+    inimigoAtual.exibe()
+    inimigoAtual.move()
     
     if(inimigoVisivel) {
-      inimigo.aparece()
+      inimigoAtual.aparece()
       this.indice++;
       if (this.indice > this.mapa.length - 1) {
         this.indice = 0;
       }
     }
 
-    if (personagem.estaColidindo(inimigo)) {
+    if (personagem.estaColidindo(inimigoAtual)) {
       vida.perdeVida();
+      somDano.play()
       personagem.tornarInvencivel();
       if (!vida.aindaTemVidas()) {
-        vida.exibe()
+        this._botao()
+        cenario.cinzou()
+        somDoJogo.stop()
+        somGameOver.play()
         image(imagemGameOver, width/2 - 200, height/3)
         noLoop()
       }
     }
     vida.exibe()
+  }
+  
+  _botao() {
+    botaoJogarNovamente.y = height / 7 * 4
+    botaoJogarNovamente.draw()
   }
 }

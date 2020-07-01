@@ -7,13 +7,15 @@ let imagemGameOver;
 let imagemTelaInicial
 let imagemVida;
 let fonteTelaInicial
+
 let somDoPulo;
+let somDano;
+let somGameOver;
+let somDoJogo;
 
 let jogo;
 let fita;
-
 let cenario;
-let somDoJogo;
 let personagem;
 let inimigo;
 let inimigoGrande;
@@ -23,7 +25,9 @@ let vida;
 
 let cenaAtual = 'telaInicial'
 let cenas
-let botaoGerenciador
+let botaoIniciar
+let botaoJogarNovamente
+
 const matrizInimigo = [
   [0, 0],
   [104, 0],

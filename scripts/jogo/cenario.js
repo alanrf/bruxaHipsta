@@ -11,6 +11,14 @@ class Cenario {
     image(this.imagem,this.x2, 0, width, height);
   }
   
+  
+  cinzou() {
+    let GRAY = color(110,110,110)
+    GRAY.setAlpha(120)
+    fill(GRAY)
+    rect(0, 0, width, height); 
+  }
+  
   move() {
     this.x1 = this.x1 - this.velocidade;
     this.x2 = this.x2 - this.velocidade;

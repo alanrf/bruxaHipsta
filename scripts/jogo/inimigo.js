@@ -4,6 +4,7 @@ class Inimigo extends Animacao {
     
     this.velocidade = velocidade
     this.x = width
+    this.posicaoOriginal = this.x
   }
   
   move() {
@@ -16,5 +17,9 @@ class Inimigo extends Animacao {
   
   alteraVelocidade(novaVelocidade) {
     this.velocidade = novaVelocidade
+  }
+  
+  voltarParaPosicaoOriginal() {
+    this.x = this.posicaoOriginal
   }
 }
