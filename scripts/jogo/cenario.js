@@ -23,11 +23,15 @@ class Cenario {
     this.x1 = this.x1 - this.velocidade;
     this.x2 = this.x2 - this.velocidade;
     
-    if (this.x1 <= -width){
+    if (this._saiuDaTela(this.x1)){
       this.x1 = this.x2 + width
     }
-    if (this.x2 < -width){    
+    if (this._saiuDaTela(this.x2)){    
       this.x2 = this.x1 + width
     }
   }
+  
+  _saiuDaTela(_x) {
+    return _x <= -width
+  } 
 }
