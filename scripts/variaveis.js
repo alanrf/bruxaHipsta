@@ -14,6 +14,7 @@ let somDoPulo;
 let somDano;
 let somGameOver;
 let somDoJogo;
+let somNarracao;
 
 let jogo;
 let fita;
@@ -29,9 +30,11 @@ let inimigoVoador;
 let pontuacao;
 let vida;
 
-let cenaAtual = 'telaInicial'
+let cenaAtual
 let cenas
+
 let botaoIniciar
+let botaoPularHistoria
 let botaoJogarNovamente
 
 const matrizInimigo = [

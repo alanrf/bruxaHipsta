@@ -17,13 +17,34 @@ class BotaoGerenciador {
   }
   
   acao() {
-    cenaAtual = "jogo"
+    this.botao.hide()
+  }
+  
+  show() {
+    this.botao.show()
+  }
+  
+  hide() {
     this.botao.hide()
   }
 }
 
 class BotaoIniciar extends BotaoGerenciador {
-  
+  acao() {
+    cenaAtual = "historia"
+    super.acao()
+  }
+}
+
+class BotaoPularHistoria extends BotaoGerenciador {
+  acao() {
+    cenaAtual = "jogo"
+    super.acao()
+    if (somNarracao.isPlaying()) {
+      somNarracao.stop()
+    }
+    loop()
+  }
 }
 
 class BotaoJogarNovamente extends BotaoGerenciador {
