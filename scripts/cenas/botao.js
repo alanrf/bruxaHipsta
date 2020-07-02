@@ -29,11 +29,10 @@ class BotaoIniciar extends BotaoGerenciador {
 class BotaoJogarNovamente extends BotaoGerenciador {
   draw() {
     super.draw()
-    console.log(this.x, this.y)
   }
   
   acao() {
-    jogo.setup()
+    jogo.reset()
     super.acao()
     loop()
   }

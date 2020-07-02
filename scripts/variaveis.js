@@ -1,4 +1,6 @@
-let imagemCenario;
+let imagemGrama;
+let imagemArvores;
+let imagemFundo;
 let imagemPersonagem;
 let imagemInimigo;
 let imagemInimigoGrande;
@@ -15,7 +17,11 @@ let somDoJogo;
 
 let jogo;
 let fita;
-let cenario;
+
+let cenarioFundo;
+let cenarioArvore;
+let cenarioGrama;
+
 let personagem;
 let inimigo;
 let inimigoGrande;
@@ -126,3 +132,4 @@ const matrizInimigoVoador = [
 ]
 
 const inimigos = []
+const cenarios = []
