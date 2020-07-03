@@ -25,14 +25,13 @@ class Personagem extends Animacao {
 
     this.velocidadeDoPulo = 0;
     this.gravidade = 6;
-    this.alturaDoPulo = -50
     this.pulos = 0
     this.piscarInvencibilidade = false;
   }
 
   pula() {
     if (this.podePular()) {
-      this.velocidadeDoPulo = this.alturaDoPulo
+      this.velocidadeDoPulo = -ALTURA_PULO_PERSONAGEM
       this.pulos++
     }
   }

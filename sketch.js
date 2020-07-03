@@ -31,6 +31,12 @@ function keyPressed() {
   jogo.keyPressed(key)
 }
 
+function mousePressed() {
+  if ('jogo' == cenaAtual) {
+    jogo.mousePressed()
+  }
+}
+
 function draw() {
   cenas[cenaAtual].draw()
 }

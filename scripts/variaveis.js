@@ -40,8 +40,10 @@ let botaoIniciar
 let botaoPularHistoria
 let botaoJogarNovamente
 
-const ALTURA_BASE_Y = 30;
-const PLACAR_PLANTA_COLETADA = 100;
+const ALTURA_BASE_Y = 30
+const PLACAR_PLANTA_COLETADA = 100
+const ALTURA_PULO_PERSONAGEM = 50
+const GRAVIDADE = 6
 
 const ENUM_TIPO_COLETAVEL = {
   ERVA:"erva",

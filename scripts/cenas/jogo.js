@@ -103,7 +103,7 @@ class Jogo {
     pontuacao = new Pontuacao();
     vida = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial)
     personagem.reset()
-    inimigos.forEach(function(inimigo) {
+    inimigos.forEach(function (inimigo) {
       inimigo.reset();
     });
     this.indice = 0
@@ -115,10 +115,18 @@ class Jogo {
 
   keyPressed(key) {
     if (key === 'ArrowUp') {
-      if (personagem.podePular()) {
-        personagem.pula()
-        somDoPulo.play()
-      }
+      this._tentaPular()
+    }
+  }
+
+  mousePressed() {
+    this._tentaPular()
+  }
+
+  _tentaPular() {
+    if (personagem.podePular()) {
+      personagem.pula()
+      somDoPulo.play()
     }
   }
 
@@ -150,7 +158,7 @@ class Jogo {
       }
     }
 
-    coletaveis.forEach(function(item) {
+    coletaveis.forEach(function (item) {
       if (personagem.estaColidindo(item)) {
         jogo._coletarItem(item)
       }
@@ -172,19 +180,19 @@ class Jogo {
   }
 
   _moveLista(_lista) {
-    _lista.forEach(function(item) {
+    _lista.forEach(function (item) {
       item.move()
     });
   }
 
   _exibeLista(_lista) {
-    _lista.forEach(function(item) {
+    _lista.forEach(function (item) {
       item.exibe()
     });
   }
 
   _exibeCenarios() {
-    cenarios.forEach(function(cenario) {
+    cenarios.forEach(function (cenario) {
       cenario.exibe();
       cenario.move();
     });
