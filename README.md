@@ -5,7 +5,7 @@ Utiliza basicamente javascript e a biblioteca p5.
 
 
 Pode ser visualizado rodando em:
-https://editor.p5js.org/alanrf/sketches/qm_q4zQoV
+https://editor.p5js.org/alanrf/present/qm_q4zQoV
 
 Também em:
 https://alanrf.github.io/bruxaHipsta/
