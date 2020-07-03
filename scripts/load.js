@@ -16,6 +16,7 @@ function loadImagensCenario() {
   imagemTelaInicial = loadImage('imagens/assets/telaInicial.png');
   imagemGameOver = loadImage('imagens/assets/game-over.png')
   imagemVida = loadImage('imagens/assets/coracao.png');
+  imagemErva = loadImage('imagens/assets/erva.png');
 }
 
 function loadImagensPersonagens() {
@@ -31,11 +32,14 @@ function loadSonsJogo() {
   somDano = loadSound('sons/uuhhh.mp3');
   somGameOver = loadSound('sons/tf_nemesis.mp3');
   somNarracao = loadSound('sons/teste.m4a');
+  somCoin = loadSound('sons/coin.mp3');
+  somWow = loadSound('sons/wow.mp3');
 }
 
 function ajustaSons() {
   somGameOver.setVolume(0.4)
   somDoJogo.setVolume(0.8)
   somDano.setVolume(0.35)
-  somNarracao.setVolume(6)
+  somNarracao.setVolume(5)
+  somWow.setVolume(0.35)
 }

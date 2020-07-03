@@ -8,13 +8,16 @@ let imagemInimigoVoador;
 let imagemGameOver;
 let imagemTelaInicial
 let imagemVida;
+let imagemErva;
 let fonteTelaInicial
 
-let somDoPulo;
-let somDano;
-let somGameOver;
-let somDoJogo;
-let somNarracao;
+let somDoPulo
+let somDano
+let somGameOver
+let somDoJogo
+let somNarracao
+let somCoin
+let somWow
 
 let jogo;
 let fita;
@@ -36,6 +39,14 @@ let cenas
 let botaoIniciar
 let botaoPularHistoria
 let botaoJogarNovamente
+
+const ALTURA_BASE_Y = 30;
+const PLACAR_PLANTA_COLETADA = 100;
+
+const ENUM_TIPO_COLETAVEL = {
+  ERVA:"erva",
+  VIDA:"vida"
+}
 
 const matrizInimigo = [
   [0, 0],
@@ -136,3 +147,4 @@ const matrizInimigoVoador = [
 
 const inimigos = []
 const cenarios = []
+const coletaveis = []

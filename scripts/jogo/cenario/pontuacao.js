@@ -1,6 +1,7 @@
 class Pontuacao {
   constructor() {
     this.pontos = 0
+    this.plantas = 0
   }
   
   exibe() {
@@ -11,6 +12,11 @@ class Pontuacao {
   }
   
   adicionarPonto() {
-    this.pontos = this.pontos + 0.2
+    this.pontos += 0.2
+  }
+  
+  adicionarPlanta(_placar) {
+    this.planta += 1
+    this.pontos += _placar
   }
 }

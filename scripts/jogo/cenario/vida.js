@@ -18,6 +18,7 @@ class Vida {
   }
   
   ganhaVida() {
+    console.log(this.vidas, this.total)
     if (this.vidas < this.total) {
       this.vidas++;
     }

@@ -17,7 +17,7 @@ class BotaoGerenciador {
   }
   
   acao() {
-    this.botao.hide()
+    this.hide()
   }
   
   show() {

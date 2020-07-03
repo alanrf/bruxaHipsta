@@ -7,8 +7,8 @@ class Jogo {
   setup() {
     this._setupCenario()
     this._setupInimigos()
-
-    personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 30, 110, 135, 220, 270);
+    this._setupColetaveis()
+    this._setupPersonagem()
 
     this.reset()
   }
@@ -23,21 +23,88 @@ class Jogo {
     cenarios.push(cenarioGrama)
   }
 
+  _setupPersonagem() {
+    personagem = new Personagem({
+      matriz: matrizPersonagem,
+      imagem: imagemPersonagem,
+      x: 0,
+      variacaoY: ALTURA_BASE_Y,
+      largura: 110,
+      altura: 135,
+      larguraSprite: 220,
+      alturaSprite: 270
+    });
+
+  }
+
   _setupInimigos() {
-    const inimigoNormal = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 30, 52, 52, 104, 104, 10);
-    const inimigoVoador = new Inimigo(matrizInimigoVoador, imagemInimigoVoador, width - 52, 200, 100, 75, 200, 150, 10);
-    const inimigoGrande = new Inimigo(matrizInimigoGrande, imagemInimigoGrande, width, 0, 200, 200, 400, 400, 10)
+    const inimigoNormal = new Inimigo({
+      matriz: matrizInimigo,
+      imagem: imagemInimigo,
+      x: width,
+      variacaoY: ALTURA_BASE_Y,
+      largura: 52,
+      altura: 52,
+      larguraSprite: 104,
+      alturaSprite: 104,
+      velocidade: 10
+    });
+
+    const inimigoVoador = new Inimigo({
+      matriz: matrizInimigoVoador,
+      imagem: imagemInimigoVoador,
+      x: width,
+      variacaoY: 200,
+      largura: 100,
+      altura: 75,
+      larguraSprite: 200,
+      alturaSprite: 150,
+      velocidade: 10
+    });
+
+    const inimigoGrande = new Inimigo({
+      matriz: matrizInimigoGrande,
+      imagem: imagemInimigoGrande,
+      x: width,
+      variacaoY: 0,
+      largura: 200,
+      altura: 200,
+      larguraSprite: 400,
+      alturaSprite: 400,
+      velocidade: 10
+    });
 
     inimigos.push(inimigoNormal)
     inimigos.push(inimigoGrande)
     inimigos.push(inimigoVoador)
   }
 
+  _setupColetaveis() {
+    const erva = new Erva({
+      imagem: imagemErva,
+      velocidade: 15,
+      delay: 2,
+      largura: 50,
+      altura: 50
+    })
+
+    const vidaExtra = new VidaExtra({
+      velocidade: 15,
+      delay: 5,
+      largura: 50,
+      altura: 50
+    })
+
+    coletaveis.push(erva)
+    coletaveis.push(vidaExtra)
+  }
+
   reset() {
     pontuacao = new Pontuacao();
-    vida = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial);
+    vida = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial)
+    personagem.reset()
     inimigos.forEach(function(inimigo) {
-      inimigo.voltarParaPosicaoOriginal();
+      inimigo.reset();
     });
     this.indice = 0
 
@@ -63,10 +130,9 @@ class Jogo {
     this._exibeCenarios()
     this._exibePlacar()
     this._exibePersonagem()
-
+    this._exibeLista(coletaveis)
     inimigoAtual.alteraVelocidade(linhaAtual.velocidade)
     inimigoAtual.exibe()
-    inimigoAtual.move()
 
     if (inimigoVisivel) {
       inimigoAtual.aparece()
@@ -84,7 +150,37 @@ class Jogo {
       }
     }
 
+    coletaveis.forEach(function(item) {
+      if (personagem.estaColidindo(item)) {
+        jogo._coletarItem(item)
+      }
+    })
+
+    this._moveLista(coletaveis)
+    inimigoAtual.move()
     vida.exibe()
+  }
+
+  _coletarItem(_item) {
+    _item.coletou()
+    if (_item.tipo === ENUM_TIPO_COLETAVEL.ERVA) {
+      pontuacao.adicionarPlanta(PLACAR_PLANTA_COLETADA)
+    }
+    if (_item.tipo === ENUM_TIPO_COLETAVEL.VIDA) {
+      vida.ganhaVida()
+    }
+  }
+
+  _moveLista(_lista) {
+    _lista.forEach(function(item) {
+      item.move()
+    });
+  }
+
+  _exibeLista(_lista) {
+    _lista.forEach(function(item) {
+      item.exibe()
+    });
   }
 
   _exibeCenarios() {
@@ -98,6 +194,7 @@ class Jogo {
     pontuacao.exibe()
     pontuacao.adicionarPonto()
   }
+
   _exibePersonagem() {
     personagem.exibe();
     personagem.aplicaGravidade();
