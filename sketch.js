@@ -31,7 +31,7 @@ function keyPressed() {
   jogo.keyPressed(key)
 }
 
-function mousePressed() {
+function touchStarted() {
   if ('jogo' == cenaAtual) {
     jogo.mousePressed()
   }
