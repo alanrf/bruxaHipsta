@@ -8,7 +8,7 @@ html, body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-image: url('/imagens/loading.jpg');
+  background-image: url('./imagens/loading.jpg');
   background-color: #fff;
   background-repeat: no-repeat;
   background-size: cover;
