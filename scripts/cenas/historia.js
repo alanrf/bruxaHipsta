@@ -21,11 +21,11 @@ class Historia {
     this._fundo()
     this._texto()
     this._botao()
-    const volumeOriginal = somDoJogo.getVolume()
-    somDoJogo.setVolume(0.2);
+    const volumeOriginal = musicaJogo.getVolume()
+    musicaIntro.setVolume(volumeOriginal / 1.5);
     somNarracao.play()
     noLoop()
-    // somDoJogo.setVolume(volumeOriginal);
+    setTimeout(function(){ musicaIntro.setVolume(volumeOriginal); }, TAMANHO_NARRACAO_EM_SEGUNDOS * 1000);
   }
 
   _fundo() {

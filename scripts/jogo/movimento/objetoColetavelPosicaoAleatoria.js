@@ -7,11 +7,10 @@ class ObjetoColetavelPosicaoAleatoria extends ObjetoColetavel {
     altura,
     tipo
   }) {
-    const MIN_Y = ALTURA_PULO_PERSONAGEM * 2 + altura + GRAVIDADE
-    const MAX_Y = height - ALTURA_BASE_Y - altura - MIN_Y
+    const MIN_Y = height - Math.floor(ALTURA_BASE_Y + ALTURA_PULO_PERSONAGEM * 2 + GRAVIDADE * 1.75 + ALTURA_PERSONAGEM)
+    const MAX_CALC = height - ALTURA_BASE_Y - MIN_Y - altura
 
-    let posicaoY = Math.floor(Math.random() * MAX_Y) + MIN_Y;
-
+    let posicaoY = Math.floor(Math.random() * MAX_CALC) + MIN_Y;
 
     super({
       imagem: imagem,
@@ -23,16 +22,16 @@ class ObjetoColetavelPosicaoAleatoria extends ObjetoColetavel {
       tipo: tipo
     })
     
-    this.maxY = MAX_Y;
+    this.maxCalc = MAX_CALC;
     this.minY = MIN_Y;
   }
   
   _posicaoAleatoriaY( ) {
-    return Math.floor(Math.random() * this.maxY) + this.minY;
+    return Math.floor(Math.random() * this.maxCalc) + this.minY;
   }
   
-  voltarParaOrigem() {
-    super.voltarParaOrigem()
+  reset() {
+    super.reset()
     this.y = this._posicaoAleatoriaY()
   }
 }

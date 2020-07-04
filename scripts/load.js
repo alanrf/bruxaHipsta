@@ -27,10 +27,10 @@ function loadImagensPersonagens() {
 }
 
 function loadSonsJogo() {
-  somDoJogo = loadSound('sons/musicas/trilha_jogo.mp3');
-  somVitoria = loadSound('sons/musicas/vitoria.mp3');
-  somGameOver = loadSound('sons/musicas/perdeu.mp3');
-  somIntro = loadSound('sons/musicas/intro.mp3');
+  musicaJogo = loadSound('sons/musicas/trilha_jogo.mp3');
+  musicaVitoria = loadSound('sons/musicas/vitoria.mp3');
+  musicaGameOver = loadSound('sons/musicas/perdeu.mp3');
+  musicaIntro = loadSound('sons/musicas/intro.mp3');
   somNarracao = loadSound('sons/narracao/intro.m4a');
   somDoPulo = loadSound('sons/efeitos/pulo.mp3');
   somDano = loadSound('sons/efeitos/dano.mp3');
@@ -39,8 +39,9 @@ function loadSonsJogo() {
 }
 
 function ajustaSons() {
-  somGameOver.setVolume(0.4)
-  somDoJogo.setVolume(0.8)
+  musicaGameOver.setVolume(0.4)
+  musicaJogo.setVolume(0.8)
+  musicaIntro.setVolume(1.2)
   somDano.setVolume(0.35)
   somNarracao.setVolume(5)
   somWow.setVolume(0.35)

@@ -43,6 +43,7 @@ class BotaoPularHistoria extends BotaoGerenciador {
     if (somNarracao.isPlaying()) {
       somNarracao.stop()
     }
+    jogo.reset()
     loop()
   }
 }

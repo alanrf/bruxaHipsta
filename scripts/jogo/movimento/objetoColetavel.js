@@ -20,7 +20,7 @@ class ObjetoColetavel extends MovimentoDelay {
   }
 
   coletou() {
-    this.voltarParaOrigem()
+    this.reset()
     this.tocarSom()
   }
 

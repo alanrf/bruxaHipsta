@@ -27,7 +27,7 @@ class MovimentoDelay {
     this.x = this.x - this.velocidade;
 
     if (this._saiuDaTela(this.x)) {
-      this.voltarParaOrigem()
+      this.reset()
     }
   }
 
@@ -35,7 +35,7 @@ class MovimentoDelay {
     return _x <= 0
   }
 
-  voltarParaOrigem() {
+  reset() {
     this.x = this.origem
   }
 }

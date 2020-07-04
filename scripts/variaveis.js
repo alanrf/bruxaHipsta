@@ -11,10 +11,10 @@ let imagemVida;
 let imagemErva;
 let fonteTelaInicial
 
-let somVitoria
-let somGameOver
-let somDoJogo
-let somIntro
+let musicaVitoria
+let musicaGameOver
+let musicaJogo
+let musicaIntro
 let somNarracao
 let somDoPulo
 let somDano
@@ -43,9 +43,11 @@ let botaoPularHistoria
 let botaoJogarNovamente
 
 const ALTURA_BASE_Y = 30
-const PLACAR_PLANTA_COLETADA = 100
+const ALTURA_PERSONAGEM = 135
 const ALTURA_PULO_PERSONAGEM = 50
+const PLACAR_PLANTA_COLETADA = 100
 const GRAVIDADE = 6
+const TAMANHO_NARRACAO_EM_SEGUNDOS = 20
 
 const ENUM_TIPO_COLETAVEL = {
   ERVA:"erva",
@@ -152,3 +154,4 @@ const matrizInimigoVoador = [
 const inimigos = []
 const cenarios = []
 const coletaveis = []
+const musicas = []

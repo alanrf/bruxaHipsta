@@ -9,8 +9,16 @@ class Jogo {
     this._setupInimigos()
     this._setupColetaveis()
     this._setupPersonagem()
+    this._setupMusicas()
 
     this.reset()
+  }
+
+  _setupMusicas() {
+    musicas.push(musicaIntro)
+    musicas.push(musicaVitoria)
+    musicas.push(musicaGameOver)
+    musicas.push(musicaJogo)
   }
 
   _setupCenario() {
@@ -30,7 +38,7 @@ class Jogo {
       x: 0,
       variacaoY: ALTURA_BASE_Y,
       largura: 110,
-      altura: 135,
+      altura: ALTURA_PERSONAGEM,
       larguraSprite: 220,
       alturaSprite: 270
     });
@@ -103,14 +111,23 @@ class Jogo {
     pontuacao = new Pontuacao();
     vida = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial)
     personagem.reset()
-    inimigos.forEach(function (inimigo) {
-      inimigo.reset();
-    });
+    this._resetLista(inimigos)
+    this._resetLista(coletaveis)
     this.indice = 0
+    this.pararMusicas()
+    musicaJogo.loop()
+  }
 
-    if (!somDoJogo.isPlaying()) {
-      somDoJogo.loop()
-    }
+  _resetLista(_lista) {
+    _lista.forEach(function (item) {
+      item.reset();
+    });
+  }
+
+  pararMusicas() {
+    musicas.forEach(function (musica) {
+      musica.stop()
+    });
   }
 
   keyPressed(key) {
@@ -222,8 +239,8 @@ class Jogo {
   _gameOver() {
     this._exibeBotaoJogarNovamente()
     cenarios[cenarios.length - 1].cinzou()
-    somDoJogo.stop()
-    somGameOver.play()
+    this.pararMusicas()
+    musicaGameOver.play()
     image(imagemGameOver, width / 2 - 200, height / 3)
     noLoop()
   }

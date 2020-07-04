@@ -12,18 +12,21 @@ function setup() {
   }
   
   jogo.setup()
+  jogo.pararMusicas()
   botaoSetup()
   
   cenaAtual = 'telaInicial'
 
   frameRate(40)
-  somDoJogo.loop();
+
+  musicaIntro.loop();
 }
 
 function botaoSetup() {
   botaoIniciar = new BotaoIniciar('Iniciar', width / 2, height / 2)
   botaoPularHistoria = new BotaoPularHistoria('Prosseguir', width / 2, height / 2)
   botaoJogarNovamente = new BotaoJogarNovamente('Jogar Novamente', width / 2, height / 2)
+  botaoPularHistoria.hide()
   botaoJogarNovamente.hide()
 }
 
