@@ -11,11 +11,13 @@ let imagemVida;
 let imagemErva;
 let fonteTelaInicial
 
-let somDoPulo
-let somDano
+let somVitoria
 let somGameOver
 let somDoJogo
+let somIntro
 let somNarracao
+let somDoPulo
+let somDano
 let somCoin
 let somWow
 

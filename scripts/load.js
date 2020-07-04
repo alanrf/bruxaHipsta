@@ -27,13 +27,15 @@ function loadImagensPersonagens() {
 }
 
 function loadSonsJogo() {
-  somDoJogo = loadSound('sons/trilha_jogo.mp3');
-  somDoPulo = loadSound('sons/somPulo.mp3');
-  somDano = loadSound('sons/uuhhh.mp3');
-  somGameOver = loadSound('sons/tf_nemesis.mp3');
-  somNarracao = loadSound('sons/teste.m4a');
-  somCoin = loadSound('sons/coin.mp3');
-  somWow = loadSound('sons/wow.mp3');
+  somDoJogo = loadSound('sons/musicas/trilha_jogo.mp3');
+  somVitoria = loadSound('sons/musicas/vitoria.mp3');
+  somGameOver = loadSound('sons/musicas/perdeu.mp3');
+  somIntro = loadSound('sons/musicas/intro.mp3');
+  somNarracao = loadSound('sons/narracao/intro.m4a');
+  somDoPulo = loadSound('sons/efeitos/pulo.mp3');
+  somDano = loadSound('sons/efeitos/dano.mp3');
+  somCoin = loadSound('sons/efeitos/coin.mp3');
+  somWow = loadSound('sons/efeitos/wow.mp3');
 }
 
 function ajustaSons() {
