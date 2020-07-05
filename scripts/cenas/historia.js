@@ -25,7 +25,7 @@ class Historia {
     musicaIntro.setVolume(volumeOriginal / 1.5);
     somNarracao.play()
     noLoop()
-    setTimeout(function(){ musicaIntro.setVolume(volumeOriginal); }, TAMANHO_NARRACAO_EM_SEGUNDOS * 1000);
+    setTimeout(function () { musicaIntro.setVolume(volumeOriginal) }, TAMANHO_NARRACAO_EM_SEGUNDOS * 1000);
   }
 
   _fundo() {
@@ -33,29 +33,19 @@ class Historia {
   }
 
   _texto() {
-    this._defineFonte()
+    texto.defineFonteHistoria()
     let yAtual = 40
     const x = width / 2
     const tamanhoLinha = 40
 
-    this.textoHistoria.forEach(function(texto) {
-      fill(255)
-      text(texto, x + 3, yAtual + 3);
-      fill(0)
-      text(texto, x, yAtual);
+    this.textoHistoria.forEach(function (textoLinha) {
+      texto.escritaDupla({
+        texto: textoLinha,
+        x: x,
+        y: yAtual
+      })
       yAtual += tamanhoLinha
     });
-
-    textFont('Georgia')
-  }
-
-  _defineFonte() {
-    strokeWeight(2)
-    stroke(245, this.opacity)
-    textAlign(CENTER)
-    textSize(35)
-    textFont('Times')
-    textStyle(BOLDITALIC);
   }
 
   _botao() {

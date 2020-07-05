@@ -15,16 +15,19 @@ class TelaInicial {
   }
   
   _texto() {
-    fill(0);
-    strokeWeight(2);
-    stroke(245, this.opacity);
-    textAlign(CENTER);
-    textSize(50);
-    textFont(fonteTelaInicial);
-    text('As aventuras de', width / 2, height / 3);
-    textSize(150);
-    text('Hipsta', width / 2, height / 5 * 3);
-    textFont('Georgia')
+    texto.defineFonteTelaInicialPequena()
+    texto.escritaDupla({
+      texto: 'As aventuras de',
+      x: width/2,
+      y: height/3
+    })
+    
+    texto.defineFonteTelaInicialGrande()
+    texto.escritaDupla({
+      texto: 'Hipsta',
+      x: width / 2,
+      y: height / 5 * 3
+    })
   }
   
   _botao() {

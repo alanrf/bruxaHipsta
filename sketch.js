@@ -4,6 +4,7 @@ function setup() {
   telaInicial = new TelaInicial()
   historia = new Historia()
   jogo = new Jogo()
+  texto = new Texto()
   
   cenas = {
     telaInicial,
@@ -32,12 +33,6 @@ function botaoSetup() {
 
 function keyPressed() {
   jogo.keyPressed(key)
-}
-
-function touchStarted() {
-  if ('jogo' == cenaAtual) {
-    jogo.mousePressed()
-  }
 }
 
 function draw() {

@@ -152,10 +152,11 @@ class Jogo {
     const inimigoAtual = inimigos[linhaAtual.inimigo]
     const inimigoVisivel = inimigoAtual.x < -inimigoAtual.largura
 
-    this._exibeCenarios()
+    this._exibeLista(cenarios)
     this._exibePlacar()
-    this._exibePersonagem()
     this._exibeLista(coletaveis)
+    this._exibePersonagem()
+  
     inimigoAtual.alteraVelocidade(linhaAtual.velocidade)
     inimigoAtual.exibe()
 
@@ -181,7 +182,10 @@ class Jogo {
       }
     })
 
+    personagem.aplicaGravidade()
+    pontuacao.adicionarPonto()
     this._moveLista(coletaveis)
+    this._moveLista(cenarios)
     inimigoAtual.move()
     vida.exibe()
   }
@@ -208,21 +212,12 @@ class Jogo {
     });
   }
 
-  _exibeCenarios() {
-    cenarios.forEach(function (cenario) {
-      cenario.exibe();
-      cenario.move();
-    });
-  }
-
   _exibePlacar() {
     pontuacao.exibe()
-    pontuacao.adicionarPonto()
   }
 
   _exibePersonagem() {
     personagem.exibe();
-    personagem.aplicaGravidade();
   }
 
   _exibeBotaoJogarNovamente() {
